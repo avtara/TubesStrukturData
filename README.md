@@ -6,9 +6,9 @@ Manage a multi linked-list that models instructors, courses, and relationships b
 ## Dev environment setup
 
 * We recommend to use Codebloks as the IDE
-
+    
     ```
-sudo apt install codeblocks
+    sudo apt install codeblocks
     ```
     or you can [Download Executable](http://www.codeblocks.org/downloads)
 
