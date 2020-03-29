@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1585459426 source:d:\tel-u\tugas\semester 2\struktur data\tugas pendahuluan\instructorsrelationship\instructurerelation.cpp
+
+1585470787 source:d:\tel-u\tugas\semester 2\struktur data\tugas pendahuluan\instructorsrelationship\main.cpp
+	<iostream>
+	<cstdlib>
+
