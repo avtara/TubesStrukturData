@@ -16,7 +16,7 @@ address createElm(string ID,string name){
     relation(P) = Nil;
     info(P).ID = ID;
     info(P).name = name;
-
+    info(P).sumRelation = 0;
     return P;
 }
 
@@ -64,6 +64,7 @@ address findByID(List L, string ID){
 
 void connecting(address P, address Q){
     relation(P) = Q;
+    info(P).sumRelation = info(P).sumRelation + 1;
 }
 
 void addInstructure(List &L){
@@ -137,6 +138,7 @@ void showInstructorCourse(List I,List L){
     string IDins;
     bool condition;
     condition = false;
+
     cout << "Enter instructor ID : ";
     cin.ignore();
     getline(cin,IDins);
@@ -157,6 +159,38 @@ void showInstructorCourse(List I,List L){
     } else if (condition == false){
         cout << "      The instructor does not teach course\n" << endl;
     }
+}
+
+void showInstructorByCourse(List L,List I){
+    printf("%-50s%\n", "|------------------------------------------------|");
+    printf("%-50s%\n", "|           Show instructor by course            |");
+    printf("%-50s%\n", "|------------------------------------------------|");
+    string name;
+    address P,check;
+    bool condition;
+    condition = false;
+
+    cout << "\nEnter name course : " ;
+    cin.ignore();
+    getline(cin,name);
+    check = findByName(I,name);
+    P = First(L);
+    printf("%-25s", "The course is taught by an instructor");
+    while(P != Nil && check != Nil){
+        if (info(relation(P)).name == name){
+            printf("%-25s", info(P).name);
+                condition = true;
+        }
+    P = next(P);
+    }
+    cout << endl;
+    if (check == Nil ){
+         cout << "\nCourse does not exist\n" ;
+    } else if (condition == false){
+        cout << "      the course is not taught by anyone\n" << endl;
+    }
+
+
 }
 
 void addCourse(List L, List &I){
@@ -204,3 +238,4 @@ void deleteCourse(List L, List I){
     printf("%-50s%\n", "|             Delete Certain Course              |");
     printf("%-50s%\n", "|------------------------------------------------|");
 }
+

@@ -5,23 +5,21 @@
 	<iostream>
 	<cstdlib>
 
-<<<<<<< HEAD
-1586942636 source:d:\tubesstrukturdata\main.cpp
+1585470787 D
+
+1586945964 source:d:\tubesstrukturdata\main.cpp
 	"InstructureRelation.h"
 
-1586941769 source:d:\tubesstrukturdata\body.cpp
+1586944686 source:d:\tubesstrukturdata\body.cpp
 	"InstructureRelation.h"
 
-1586927680 d:\tubesstrukturdata\instructurerelation.h
-=======
-1586930512 source:d:\tubesstrukturdata\main.cpp
-	"InstructureRelation.h"
+1586944053 d:\tubesstrukturdata\instructurerelation.h
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<string>
 
-1586930957 source:d:\tubesstrukturdata\body.cpp
-	"InstructureRelation.h"
-
-1586931653 d:\tubesstrukturdata\instructurerelation.h
->>>>>>> 72dd989ac3f89ce939a6ba83958e7178d2c37a87
+1586931653 d989ac3f89ce939a6ba83958e7178d2c37a87
 	<iostream>
 	<cstdlib>
 	<stdio.h>

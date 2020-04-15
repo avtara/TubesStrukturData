@@ -50,7 +50,7 @@ void addInstructure(List &L);
 void showInstructorList(List L);
 void addCourse(List L, List &I);
 void menuList();
-
+void showInstructorByCourse(List L,List I);
 void deleteCourse(List L, List I);
 
 void showInstructorCourse(List I,List L);
