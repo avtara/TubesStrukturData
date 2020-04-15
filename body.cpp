@@ -51,6 +51,17 @@ address findByName(List L, string name){
     return Nil;
 }
 
+address findRelation(List L, string name){
+    address P = First(L);
+    while(P != Nil){
+        if(info(relation(P)).ID == name){
+            return P;
+        }
+        P = next(P);
+    }
+    return Nil;
+}
+
 address findByID(List L, string ID){
     address P = First(L);
     while(P != Nil){
@@ -225,17 +236,77 @@ void deleteFirst(List &L, address temp){
     }
 }
 
-void deleteAfter(address prec, address temp){
-    temp = next(prec);
-    next(prec) = next(temp);
-    prev(next(prec)) = prec;
-    prev(temp) = Nil;
-    next(temp) = Nil;
+void deleteAfter(List &L,address Prec, address &P){
+    P = next(Prec);
+    if (First(L) == NULL || Prec == NULL) {
+
+    }else if (next(Prec) == Last(L)) {
+        Last(L) = Prec;
+        next(Prec) = NULL;
+        prev(P) = NULL;
+    }else {
+        next(Prec) = next(P);
+        prev(P) = NULL;
+        prev(next(P)) = Prec;
+        next(P) = NULL;
+    }
 }
 
-void deleteCourse(List L, List I){
+void  deleteCourse(List L, List &I){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "|             Delete Certain Course              |");
     printf("%-50s%\n", "|------------------------------------------------|");
+    string IDins, nameCourse;
+    address temp;
+    cin.ignore();
+    cout << "Enter Course Name : ";
+    getline(cin, nameCourse);
+    if(findByName(I, nameCourse) == Nil){
+        printf("%-50s%\n", "\n             No course registered\n");
+    }else{
+        cout << "Verification ID Instructor : ";
+        getline(cin, IDins);
+        if(info(relation(findByName(I, nameCourse))).ID == IDins){
+            if(totalCourse(I) == 1){
+                deleteFirst(I,temp);
+                delete(temp);
+                printf("%-50s%\n", "\n        Delete Course Success\n");
+            }else{
+                deleteAfter(I,prev(findByName(I, nameCourse)), temp);
+                delete(temp);
+                printf("%-50s%\n", "\n        Delete Course Success\n");
+            }
+        }else{
+            cout << printf("%-50s%\n", "\nVerification Failed, Delete Course Failed\n");
+        }
+    }
+}
+
+void deleteInstruction(List &L, List I){
+    printf("%-50s%\n", "|------------------------------------------------|");
+    printf("%-50s%\n", "|           Delete Certain Instruction           |");
+    printf("%-50s%\n", "|------------------------------------------------|");
+    string ID, name;
+    address temp;
+    cin.ignore();
+    cout << "Enter Instructor ID : ";
+    getline(cin, ID);
+    if(findByID(L, ID) == Nil){
+        printf("%-50s%\n", "\n             No Instruction registered\n");
+    }else{
+        if(findRelation(I, ID) != Nil){
+            printf("%-50s%\n", "\nInstructor has relation, Delete instructor failed\n");
+        }else{
+            if(totalCourse(L) == 1){
+                deleteFirst(L,temp);
+                delete(temp);
+                printf("%-50s%\n", "\n        Delete Instructor Success\n");
+            }else{
+                deleteAfter(prev(findByID(L, ID)), temp);
+                delete(temp);
+                printf("%-50s%\n", "\n        Delete Instructor Success\n");
+            }
+        }
+    }
 }
 

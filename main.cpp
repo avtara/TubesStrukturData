@@ -15,8 +15,9 @@ int main()
     cin >> choice;
     cout << endl;
     if (choice == "000"){
-                   cout << "                   You have finished selecting the menu                    " << endl;
-        printf("%-50s%\n", "|-------------------------------------------------------------------------|");
+                   cout << "                   You have finished selecting the menu                    " ;
+        printf("%-50s%\n", "\n|-------------------------------------------------------------------------|");
+        cout <<  endl;
     }
     while(choice != "000"){
         if(choice == "1"){
@@ -29,6 +30,10 @@ int main()
             showInstructorCourse(course,instructure);
         }else if (choice == "7"){
             showInstructorByCourse(instructure,course);
+        }else if(choice == "5"){
+            deleteCourse(instructure, course);
+        }else if(choice == "6"){
+            deleteInstruction(instructure, course);
         }else {
             cout << "                       Input does not exist on menu"                        << endl;
         }
