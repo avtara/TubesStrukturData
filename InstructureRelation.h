@@ -43,11 +43,15 @@ address findByName(List L, string name);
 void connecting(address P, address Q);
 address findByID(List L, string ID);
 int totalCourse(List L);
+void deleteFirst(List &L, address temp);
+void deleteAfter(address prec, address temp);
 
 void addInstructure(List &L);
 void showInstructorList(List L);
 void addCourse(List L, List &I);
 void menuList();
+
+void deleteCourse(List L, List I);
 
 void showInstructorCourse(List I,List L);
 

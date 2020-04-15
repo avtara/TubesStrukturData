@@ -132,6 +132,7 @@ void showInstructorCourse(List I,List L){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "|            Show course by instructor           |");
     printf("%-50s%\n", "|------------------------------------------------|");
+
     address P,check;
     string IDins;
     bool condition;
@@ -141,18 +142,20 @@ void showInstructorCourse(List I,List L){
     getline(cin,IDins);
     check = findByID(L,IDins);
     P = First(I);
+    printf("%-25s|%-25s%\n", "Instructor Name", "Course Name");
+    printf("%-50s%\n", "|------------------------------------------------|");
     while (P != Nil && check != Nil){
         if (info(relation(P)).ID == IDins) {
-            cout << "Instructor Teach : " << info(P).name << endl;
+            printf("%-25s|%-25s%\n", info(relation(P)).name.c_str(), info(P).name.c_str());
             condition = true;
         }
     P = next(P);
     }
-
+    cout << endl;
     if (check == Nil ){
-        cout << "\nThe instructor does not exist\n" << endl;
+        cout << "          The instructor does not exist\n" << endl;
     } else if (condition == false){
-        cout << "\nThe instructor does not teach course\n" << endl;
+        cout << "      The instructor does not teach course\n" << endl;
     }
 }
 
@@ -174,4 +177,30 @@ void addCourse(List L, List &I){
         connecting(Last(I), findByID(L, IDins));
         cout << "\nThe course was successfully registered\n" << endl;
     }
+}
+
+void deleteFirst(List &L, address temp){
+    if(First(L) == Last(L)){
+        temp = First(L);
+        First(L) = Nil;
+        Last(L) = Nil;
+    }else{
+        temp = First(L);
+        First(L) = next(temp);
+        next(temp) = Nil;
+    }
+}
+
+void deleteAfter(address prec, address temp){
+    temp = next(prec);
+    next(prec) = next(temp);
+    prev(next(prec)) = prec;
+    prev(temp) = Nil;
+    next(temp) = Nil;
+}
+
+void deleteCourse(List L, List I){
+    printf("%-50s%\n", "|------------------------------------------------|");
+    printf("%-50s%\n", "|             Delete Certain Course              |");
+    printf("%-50s%\n", "|------------------------------------------------|");
 }
