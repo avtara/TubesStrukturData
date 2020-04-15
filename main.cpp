@@ -15,7 +15,7 @@ int main()
     cout << "Enter :";
     cin >> choice;
     cout << endl;
-    while(choice != "0"){
+    while(choice != "000"){
         if(choice == "1"){
             addInstructure(instructure);
         }else if(choice == "2"){

@@ -106,7 +106,7 @@ void menuList(){
     printf("%-50s%\n", "| 1. Add Instructor                              |");
     printf("%-50s%\n", "| 2. Show Instructor                             |");
     printf("%-50s%\n", "| 3. Add Course                                  |");
-    printf("%-50s%\n", "| 4. Show Instructor teaching more then 3 course |");
+    printf("%-50s%\n", "| 4. Show the courses taught                     |");
     printf("%-50s%\n", "|------------------------------------------------|");
 }
 
@@ -124,6 +124,7 @@ void showInstructorCourse(List I,List L){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "|            Show course by instructor           |");
     printf("%-50s%\n", "|------------------------------------------------|");
+
     address P,check;
     string IDins;
     bool condition;
@@ -133,18 +134,20 @@ void showInstructorCourse(List I,List L){
     getline(cin,IDins);
     check = findByID(L,IDins);
     P = First(I);
+    printf("%-25s|%-25s%\n", "Instructor Name", "Course Name");
+    printf("%-50s%\n", "|------------------------------------------------|");
     while (P != Nil && check != Nil){
         if (info(relation(P)).ID == IDins) {
-            cout << "Instructor Teach : " << info(P).name << endl;
+            printf("%-25s|%-25s%\n", info(relation(P)).name.c_str(), info(P).name.c_str());
             condition = true;
         }
     P = next(P);
     }
-
+    cout << endl;
     if (check == Nil ){
-        cout << "\nThe instructor does not exist\n" << endl;
+        cout << "          The instructor does not exist\n" << endl;
     } else if (condition == false){
-        cout << "\nThe instructor does not teach course\n" << endl;
+        cout << "      The instructor does not teach course\n" << endl;
     }
 }
 
