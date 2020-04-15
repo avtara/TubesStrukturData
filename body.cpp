@@ -70,7 +70,7 @@ void addInstructure(List &L){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "|               Add Instructor                   |");
     printf("%-50s%\n", "|------------------------------------------------|");
-    string name, ID, choice = "-1";
+    string name, ID;
     cout << "ID : ";
     cin >> ID;
     cin.ignore();
@@ -105,5 +105,36 @@ void menuList(){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "| 1. Add Instructor                              |");
     printf("%-50s%\n", "| 2. Show Instructor                             |");
+    printf("%-50s%\n", "| 3. Add Course                                  |");
     printf("%-50s%\n", "|------------------------------------------------|");
+}
+
+int totalCourse(List L){
+    int total = 0;
+    address P = First(L);
+    while(P != Nil){
+        total++;
+        P = next(P);
+    }
+    return total;
+}
+
+void addCourse(List L, List &I){
+    printf("%-50s%\n", "|------------------------------------------------|");
+    printf("%-50s%\n", "|                 Add Course                     |");
+    printf("%-50s%\n", "|------------------------------------------------|");
+    string IDins,ID,course;
+    cout << "Instuctor ID : ";
+    cin.ignore();
+    getline(cin, IDins);
+    if(findByID(L, IDins) == Nil){
+        cout << "\ninstructor not found, cannot add course\n" << endl;
+    }else{
+        cout << "Course name : ";
+        getline(cin, course);
+        ID = course[0] + course[1] + course[2] + "32910";
+        insertLast(I, createElm(ID, course));
+        connecting(Last(I), findByID(L, IDins));
+        cout << "\nThe course was successfully registered\n" << endl;
+    }
 }

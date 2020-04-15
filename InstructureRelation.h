@@ -41,9 +41,12 @@ void insertLast(List &L, address P);
 void printList(List L);
 address findByName(List L, string name);
 void connecting(address P, address Q);
+address findByID(List L, string ID);
+int totalCourse(List L);
 
 void addInstructure(List &L);
 void showInstructorList(List L);
+void addCourse(List L, List &I);
 void menuList();
 
 

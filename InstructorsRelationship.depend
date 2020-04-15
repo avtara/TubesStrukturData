@@ -5,13 +5,13 @@
 	<iostream>
 	<cstdlib>
 
-1586847818 source:d:\tubesstrukturdata\main.cpp
+1586922097 source:d:\tubesstrukturdata\main.cpp
 	"InstructureRelation.h"
 
 1586848238 source:d:\tubesstrukturdata\body.cpp
 	"InstructureRelation.h"
 
-1586847866 d:\tubesstrukturdata\instructurerelation.h
+1586924360 d:\tubesstrukturdata\instructurerelation.h
 	<iostream>
 	<cstdlib>
 	<stdio.h>
