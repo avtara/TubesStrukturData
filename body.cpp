@@ -99,10 +99,12 @@ void showInstructorList(List L){
     cout << endl;
 }
 
+
 void menuList(){
     printf("%-50s%\n", "|-------------------------------------------------------------------------|");
     printf("%-50s%\n", "|                           Instructor System                             |");
     printf("%-50s%\n", "|-------------------------------------------------------------------------|");
+    printf("%-50s%\n", "| 000. Exit                                                               |");
     printf("%-50s%\n", "| 1. Add Instructor                                                       |");
     printf("%-50s%\n", "| 2. Show Instructor                                                      |");
     printf("%-50s%\n", "| 3. Add Course                                                           |");
@@ -134,7 +136,7 @@ void showInstructorCourse(List I,List L){
     string IDins;
     bool condition;
     condition = false;
-    cout << "Enter instructor ID :";
+    cout << "Enter instructor ID : ";
     cin.ignore();
     getline(cin,IDins);
     check = findByID(L,IDins);
