@@ -197,8 +197,17 @@ void deleteAfter(address prec, address temp){
     next(temp) = Nil;
 }
 
-void deleteCourse(List L, List I){
+void deleteCourse(List L, List &I){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "|             Delete Certain Course              |");
     printf("%-50s%\n", "|------------------------------------------------|");
+    string IDins, nameCourse, nameIns;
+    cin.ignore();
+    getline(cin, nameCourse);
+    if(findByName(I, nameCourse) == Nil){
+        printf("%-50s%\n", "             No course registered\n")
+    }else{
+
+    }
+
 }
