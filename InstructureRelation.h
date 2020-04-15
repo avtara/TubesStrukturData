@@ -49,6 +49,6 @@ void showInstructorList(List L);
 void addCourse(List L, List &I);
 void menuList();
 
-
+void showInstructorCourse(List I,List L);
 
 #endif // INSTRUCTURERELATION_H_INCLUDED

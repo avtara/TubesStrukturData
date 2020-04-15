@@ -101,11 +101,12 @@ void showInstructorList(List L){
 
 void menuList(){
     printf("%-50s%\n", "|------------------------------------------------|");
-    printf("%-50s%\n", "|              Instruktor  System                |");
+    printf("%-50s%\n", "|              Instructor  System                |");
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "| 1. Add Instructor                              |");
     printf("%-50s%\n", "| 2. Show Instructor                             |");
     printf("%-50s%\n", "| 3. Add Course                                  |");
+    printf("%-50s%\n", "| 4. Show Instructor teaching more then 3 course |");
     printf("%-50s%\n", "|------------------------------------------------|");
 }
 
@@ -117,6 +118,34 @@ int totalCourse(List L){
         P = next(P);
     }
     return total;
+}
+
+void showInstructorCourse(List I,List L){
+    printf("%-50s%\n", "|------------------------------------------------|");
+    printf("%-50s%\n", "|            Show course by instructor           |");
+    printf("%-50s%\n", "|------------------------------------------------|");
+    address P,check;
+    string IDins;
+    bool condition;
+    condition = false;
+    cout << "Enter instructor ID :";
+    cin.ignore();
+    getline(cin,IDins);
+    check = findByID(L,IDins);
+    P = First(I);
+    while (P != Nil && check != Nil){
+        if (info(relation(P)).ID == IDins) {
+            cout << "Instructor Teach : " << info(P).name << endl;
+            condition = true;
+        }
+    P = next(P);
+    }
+
+    if (check == Nil ){
+        cout << "\nThe instructor does not exist\n" << endl;
+    } else if (condition == false){
+        cout << "\nThe instructor does not teach course\n" << endl;
+    }
 }
 
 void addCourse(List L, List &I){

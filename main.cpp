@@ -22,6 +22,8 @@ int main()
             showInstructorList(instructure);
         }else if(choice == "3"){
             addCourse(instructure, course);
+        }else if (choice == "4"){
+            showInstructorCourse(course,instructure);
         }
         menuList();
         cout << "Enter : ";
