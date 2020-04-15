@@ -100,14 +100,20 @@ void showInstructorList(List L){
 }
 
 void menuList(){
-    printf("%-50s%\n", "|------------------------------------------------|");
-    printf("%-50s%\n", "|              Instructor  System                |");
-    printf("%-50s%\n", "|------------------------------------------------|");
-    printf("%-50s%\n", "| 1. Add Instructor                              |");
-    printf("%-50s%\n", "| 2. Show Instructor                             |");
-    printf("%-50s%\n", "| 3. Add Course                                  |");
-    printf("%-50s%\n", "| 4. Show Instructor teaching more then 3 course |");
-    printf("%-50s%\n", "|------------------------------------------------|");
+    printf("%-50s%\n", "|-------------------------------------------------------------------------|");
+    printf("%-50s%\n", "|                           Instructor System                             |");
+    printf("%-50s%\n", "|-------------------------------------------------------------------------|");
+    printf("%-50s%\n", "| 1. Add Instructor                                                       |");
+    printf("%-50s%\n", "| 2. Show Instructor                                                      |");
+    printf("%-50s%\n", "| 3. Add Course                                                           |");
+    printf("%-50s%\n", "| 4. Show course taught                                                   |");
+    printf("%-50s%\n", "| 5. Delete a certain course                                              |");
+    printf("%-50s%\n", "| 6. Delete a certain instructor                                          |");
+    printf("%-50s%\n", "| 7. Show instructor by course                                            |");
+    printf("%-50s%\n", "| 8. Show instructor who teaching more then 3 course                      |");
+    printf("%-50s%\n", "| 9. Find the average number of courses taught by an instructor           |");
+    printf("%-50s%\n", "| 10. Find the greatest number of courses taught by a same instructor     |");
+    printf("%-50s%\n", "|-------------------------------------------------------------------------|");
 }
 
 int totalCourse(List L){
