@@ -5,6 +5,15 @@
 	<iostream>
 	<cstdlib>
 
+<<<<<<< HEAD
+1586942636 source:d:\tubesstrukturdata\main.cpp
+	"InstructureRelation.h"
+
+1586941769 source:d:\tubesstrukturdata\body.cpp
+	"InstructureRelation.h"
+
+1586927680 d:\tubesstrukturdata\instructurerelation.h
+=======
 1586930512 source:d:\tubesstrukturdata\main.cpp
 	"InstructureRelation.h"
 
@@ -12,6 +21,7 @@
 	"InstructureRelation.h"
 
 1586931653 d:\tubesstrukturdata\instructurerelation.h
+>>>>>>> 72dd989ac3f89ce939a6ba83958e7178d2c37a87
 	<iostream>
 	<cstdlib>
 	<stdio.h>
