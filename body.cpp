@@ -176,3 +176,29 @@ void addCourse(List L, List &I){
         cout << "\nThe course was successfully registered\n" << endl;
     }
 }
+
+void deleteFirst(List &L, address temp){
+    if(First(L) == Last(L)){
+        temp = First(L);
+        First(L) = Nil;
+        Last(L) = Nil;
+    }else{
+        temp = First(L);
+        First(L) = next(temp);
+        next(temp) = Nil;
+    }
+}
+
+void deleteAfter(address prec, address temp){
+    temp = next(prec);
+    next(prec) = next(temp);
+    prev(next(prec)) = prec;
+    prev(temp) = Nil;
+    next(temp) = Nil;
+}
+
+void deleteCourse(List L, List I){
+    printf("%-50s%\n", "|------------------------------------------------|");
+    printf("%-50s%\n", "|             Delete Certain Course              |");
+    printf("%-50s%\n", "|------------------------------------------------|");
+}
