@@ -27,6 +27,7 @@ struct elmlist {
     address next;
     address prev;
     address relation;
+    int sumRelation;
 };
 
 struct List {
@@ -45,16 +46,19 @@ address findByID(List L, string ID);
 address findRelation(List L, string name);
 int totalCourse(List L);
 void deleteFirst(List &L, address temp);
-void deleteAfter(List &L,address Prec, address &p);
+void deleteAfter(address Prec, address &p);
+void deleteLast(List &L, address temp);
 
 void addInstructure(List &L);
 void showInstructorList(List L);
 void addCourse(List L, List &I);
 void menuList();
+void showInstructorByCourse(List L,List I);
 
 void deleteCourse(List L, List &I);
-void deleteInstruction(List &L, List I);
+
 
 void showInstructorCourse(List I,List L);
+void deleteInstruction(List &L, List I);
 
 #endif // INSTRUCTURERELATION_H_INCLUDED

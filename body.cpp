@@ -16,7 +16,7 @@ address createElm(string ID,string name){
     relation(P) = Nil;
     info(P).ID = ID;
     info(P).name = name;
-
+    //info(P).sumRelation = 0;
     return P;
 }
 
@@ -75,6 +75,7 @@ address findByID(List L, string ID){
 
 void connecting(address P, address Q){
     relation(P) = Q;
+    //info(P).sumRelation = info(P).sumRelation + 1;
 }
 
 void addInstructure(List &L){
@@ -148,6 +149,7 @@ void showInstructorCourse(List I,List L){
     string IDins;
     bool condition;
     condition = false;
+
     cout << "Enter instructor ID : ";
     cin.ignore();
     getline(cin,IDins);
@@ -170,6 +172,26 @@ void showInstructorCourse(List I,List L){
     }
 }
 
+void showInstructorByCourse(List L,List I){
+    printf("%-50s%\n", "|------------------------------------------------|");
+    printf("%-50s%\n", "|           Show instructor by course            |");
+    printf("%-50s%\n", "|------------------------------------------------|");
+    string name;
+
+
+    cout << "\nEnter name course : " ;
+    cin.ignore();
+    getline(cin,name);
+    if(findByName(I,name) == Nil){
+        cout << "\nCourse does not exist\n" ;
+    }else{
+        if(relation(findByName(I,name)) == Nil){
+            cout << "\nThe course is not taught by anyone" << endl;
+        }else{
+            cout << "\nThe course is taught by " << info(relation(findByName(I,name))).name << endl;
+        }
+    }
+}
 void addCourse(List L, List &I){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "|                 Add Course                     |");
@@ -198,23 +220,29 @@ void deleteFirst(List &L, address temp){
     }else{
         temp = First(L);
         First(L) = next(temp);
+        prev(First(L)) = Nil;
         next(temp) = Nil;
     }
 }
 
-void deleteAfter(List &L,address Prec, address &P){
+void deleteAfter(address Prec, address &P){
     P = next(Prec);
-    if (First(L) == NULL || Prec == NULL) {
+    next(Prec) = next(P);
+    prev(next(Prec)) = Prec;
+    next(P) = Nil;
+    prev(P) = Nil;
+}
 
-    }else if (next(Prec) == Last(L)) {
-        Last(L) = Prec;
-        next(Prec) = NULL;
-        prev(P) = NULL;
-    }else {
-        next(Prec) = next(P);
-        prev(P) = NULL;
-        prev(next(P)) = Prec;
-        next(P) = NULL;
+void deleteLast(List &L, address temp){
+    if(First(L) == Last(L)){
+        temp = First(L);
+        First(L) = Nil;
+        Last(L) = Nil;
+    }else{
+        temp = Last(L);
+        Last(L) = prev(temp);
+        next(Last(L)) = Nil;
+        prev(temp) = Nil;
     }
 }
 
@@ -233,12 +261,16 @@ void  deleteCourse(List L, List &I){
         cout << "Verification ID Instructor : ";
         getline(cin, IDins);
         if(info(relation(findByName(I, nameCourse))).ID == IDins){
-            if(totalCourse(I) == 1){
+            if(findByName(I, nameCourse) == First(I)){
                 deleteFirst(I,temp);
                 delete(temp);
                 printf("%-50s%\n", "\n        Delete Course Success\n");
+            }else if(findByName(I, nameCourse) == Last(I)){
+                deleteLast(I,temp);
+                delete(temp);
+                printf("%-50s%\n", "\n        Delete Course Success\n");
             }else{
-                deleteAfter(I,prev(findByName(I, nameCourse)), temp);
+                deleteAfter(prev(findByName(I, nameCourse)), temp);
                 delete(temp);
                 printf("%-50s%\n", "\n        Delete Course Success\n");
             }
@@ -261,17 +293,22 @@ void deleteInstruction(List &L, List I){
         printf("%-50s%\n", "\n             No Instruction registered\n");
     }else{
         if(findRelation(I, ID) != Nil){
-            printf("%-50s%\n", "\nInstructor has relation, Delete instructor failed\n");
+            printf("%-50s%\n", "\nInstructor has relation, Delete instructor failed or Try delete course first!\n");
         }else{
-            if(totalCourse(L) == 1){
+            if(findByID(L, ID) == First(L)){
                 deleteFirst(L,temp);
                 delete(temp);
-                printf("%-50s%\n", "\n        Delete Instructor Success\n");
+                printf("%-50s%\n", "\n        Delete Instruction Success\n");
+            }else if(findByID(L, ID) == Last(L)){
+                deleteLast(L,temp);
+                delete(temp);
+                printf("%-50s%\n", "\n        Delete Instruction Success\n");
             }else{
                 deleteAfter(prev(findByID(L, ID)), temp);
                 delete(temp);
-                printf("%-50s%\n", "\n        Delete Instructor Success\n");
+                printf("%-50s%\n", "\n        Delete Instruction Success\n");
             }
         }
     }
 }
+

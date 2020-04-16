@@ -5,7 +5,6 @@ using namespace std;
 int main()
 {
     List instructure, course;
-    address temp;
     string choice;
 
     createList(instructure);
@@ -29,6 +28,8 @@ int main()
             addCourse(instructure, course);
         }else if (choice == "4"){
             showInstructorCourse(course,instructure);
+        }else if (choice == "7"){
+            showInstructorByCourse(instructure,course);
         }else if(choice == "5"){
             deleteCourse(instructure, course);
         }else if(choice == "6"){
@@ -39,7 +40,11 @@ int main()
         menuList();
         cout << "Enter : ";
         cin >> choice;
+        if (choice == "000"){
+                   cout << "                   You have finished selecting the menu                    " << endl;
+        printf("%-50s%\n", "|-------------------------------------------------------------------------|");
         cout << endl;
+        }
     }
 
 }
