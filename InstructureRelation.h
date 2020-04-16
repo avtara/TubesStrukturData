@@ -62,5 +62,5 @@ void showInstructorCourse(List I,List L);
 void deleteInstruction(List &L, List I);
 void showMostCourses(List L,List I);
 void showInstructorTeachMostCourse(List L,List I);
-
+void mean(List L,List I);
 #endif // INSTRUCTURERELATION_H_INCLUDED

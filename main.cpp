@@ -40,6 +40,8 @@ int main()
             showMostCourses(instructure,course);
         }else if (choice == "10"){
             showInstructorTeachMostCourse(instructure,course);
+        }else if (choice == "11"){
+            mean(instructure,course);
         }else {
             cout << "                       Input does not exist on menu"                        << endl;
         }

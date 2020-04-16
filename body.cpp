@@ -125,7 +125,7 @@ void menuList(){
     printf("%-50s%\n", "| 8. Show instructor who teaching more then 3 course                      |");
     printf("%-50s%\n", "| 9. The highest number of courses taught by instructors                  |");
     printf("%-50s%\n", "| 10. The instructors who teach the most taught courses                   |");
-    printf("%-50s%\n", "| 11. Find the average number of courses taught by an instructor          |");
+    printf("%-50s%\n", "| 11. The average course taught by one instructor                         |");
     printf("%-50s%\n", "|-------------------------------------------------------------------------|");
 }
 
@@ -393,3 +393,32 @@ void showInstructorTeachMostCourse(List L,List I){
     }
 }
 
+void mean(List L,List I){
+    address pCourse,pInstructor;
+    int sumInstructor,sumCourse,mean;
+    pInstructor = First(L);
+    sumInstructor = 0;
+    sumCourse = 0;
+    while (pInstructor != Nil){
+        sumInstructor++;
+         pCourse = First(I);
+         while (pCourse != Nil){
+            if (info(relation(pCourse)).name == info(pInstructor).name){
+                sumCourse++;
+            }
+            pCourse = next(pCourse);
+         }
+        pInstructor = next(pInstructor);
+    }
+    if (pInstructor == Nil ){
+        cout << "\nThe instructor have not been made yet\n" ;
+    }else if (pCourse == Nil) {
+        cout << "\nThe course has not been created\n" ;
+    }else {
+        mean = sumCourse/sumInstructor ;
+        if (mean == 0){
+            mean = 1;
+        }
+        cout << "\nThe average course taught by one instructor is :" << mean ;
+    }
+}
