@@ -10,10 +10,16 @@
 1587010695 source:d:\tubesstrukturdata\main.cpp
 	"InstructureRelation.h"
 
-1587011638 source:d:\tubesstrukturdata\body.cpp
+1587033124 source:d:\tubesstrukturdata\body.cpp
 	"InstructureRelation.h"
 
-1587011424 d:\tubesstrukturdata\instructurerelation.h
+1587033110 d:\tubesstrukturdata\instructurerelation.h
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<string>
+
+1587029612 06af9fa688d4064ba81ca4c3fa6f3874c92fc
 	<iostream>
 	<cstdlib>
 	<stdio.h>

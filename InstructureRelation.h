@@ -20,6 +20,7 @@ typedef struct elmlist *address;
 
 struct infotype{
     string ID, name;
+    //int sumRelation;
 };
 
 struct elmlist {
@@ -27,7 +28,7 @@ struct elmlist {
     address next;
     address prev;
     address relation;
-    int sumRelation;
+
 };
 
 struct List {
@@ -56,7 +57,7 @@ void menuList();
 void showInstructorByCourse(List L,List I);
 
 void deleteCourse(List L, List &I);
-
+void deleteInstruction(List &L, List I);
 
 void showInstructorCourse(List I,List L);
 void deleteInstruction(List &L, List I);

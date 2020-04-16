@@ -176,10 +176,10 @@ void showInstructorByCourse(List L,List I){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "|           Show instructor by course            |");
     printf("%-50s%\n", "|------------------------------------------------|");
+
     string name;
 
-
-    cout << "\nEnter name course : " ;
+    cout << "Enter Course name : ";
     cin.ignore();
     getline(cin,name);
     if(findByName(I,name) == Nil){
@@ -304,7 +304,7 @@ void deleteInstruction(List &L, List I){
                 delete(temp);
                 printf("%-50s%\n", "\n        Delete Instruction Success\n");
             }else{
-                deleteAfter(prev(findByID(L, ID)), temp);
+                deleteAfter(findByID(L, ID)->prev, temp);
                 delete(temp);
                 printf("%-50s%\n", "\n        Delete Instruction Success\n");
             }
