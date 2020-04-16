@@ -176,21 +176,27 @@ void showInstructorByCourse(List L,List I){
     printf("%-50s%\n", "|------------------------------------------------|");
     printf("%-50s%\n", "|           Show instructor by course            |");
     printf("%-50s%\n", "|------------------------------------------------|");
-    string name;
+
     address P,check;
+    string name;
     bool condition;
     condition = false;
 
-    cout << "\nEnter name course : " ;
+    cout << "Enter Course name : ";
     cin.ignore();
     getline(cin,name);
     check = findByName(I,name);
-    P = First(L);
-    printf("%-25s", "The course is taught by an instructor");
-    while(P != Nil && check != Nil){
-        if (info(relation(P)).name == name){
-            printf("%-25s", info(P).name);
-                condition = true;
+    P = First(I);
+    if (P != Nil && check != Nil){
+        printf( "The course is  taught by");
+        cout << endl;
+        printf("%-50s%\n", "|------------------------------------------------|");
+    }
+    while (P != Nil && check != Nil){
+        if (info(P).name == name) {
+            printf("|",info(relation(P)).name.c_str());
+            condition = true;
+            cout << endl;
         }
     P = next(P);
     }
@@ -198,7 +204,7 @@ void showInstructorByCourse(List L,List I){
     if (check == Nil ){
          cout << "\nCourse does not exist\n" ;
     } else if (condition == false){
-        cout << "      the course is not taught by anyone\n" << endl;
+        cout << "      The course is not taught by anyone\n" << endl;
     }
 
 
@@ -276,6 +282,7 @@ void  deleteCourse(List L, List &I){
                 delete(temp);
                 printf("%-50s%\n", "\n        Delete Course Success\n");
             }
+            info(findByName(I, nameCourse)).sumRelation = info(findByName(I, nameCourse)).sumRelation - 1;
         }else{
             cout << printf("%-50s%\n", "\nVerification Failed, Delete Course Failed\n");
         }
@@ -302,7 +309,7 @@ void deleteInstruction(List &L, List I){
                 delete(temp);
                 printf("%-50s%\n", "\n        Delete Instructor Success\n");
             }else{
-                deleteAfter(prev(findByID(L, ID)), temp);
+                deleteAfter(L,findByID(L, ID)->prev, temp);
                 delete(temp);
                 printf("%-50s%\n", "\n        Delete Instructor Success\n");
             }
