@@ -7,13 +7,13 @@
 
 1585470787 D
 
-1587010695 source:d:\tubesstrukturdata\main.cpp
+1587044983 source:d:\tubesstrukturdata\main.cpp
 	"InstructureRelation.h"
 
-1587033124 source:d:\tubesstrukturdata\body.cpp
+1587044954 source:d:\tubesstrukturdata\body.cpp
 	"InstructureRelation.h"
 
-1587033110 d:\tubesstrukturdata\instructurerelation.h
+1587044931 d:\tubesstrukturdata\instructurerelation.h
 	<iostream>
 	<cstdlib>
 	<stdio.h>

@@ -16,7 +16,6 @@ address createElm(string ID,string name){
     relation(P) = Nil;
     info(P).ID = ID;
     info(P).name = name;
-    //info(P).sumRelation = 0;
     return P;
 }
 
@@ -75,7 +74,6 @@ address findByID(List L, string ID){
 
 void connecting(address P, address Q){
     relation(P) = Q;
-    //info(P).sumRelation = info(P).sumRelation + 1;
 }
 
 void addInstructure(List &L){
@@ -125,8 +123,9 @@ void menuList(){
     printf("%-50s%\n", "| 6. Delete a certain instructor                                          |");
     printf("%-50s%\n", "| 7. Show instructor by course                                            |");
     printf("%-50s%\n", "| 8. Show instructor who teaching more then 3 course                      |");
-    printf("%-50s%\n", "| 9. Find the average number of courses taught by an instructor           |");
-    printf("%-50s%\n", "| 10. Find the greatest number of courses taught by a same instructor     |");
+    printf("%-50s%\n", "| 9. The highest number of courses taught by instructors                  |");
+    printf("%-50s%\n", "| 10. The instructors who teach the most taught courses                   |");
+    printf("%-50s%\n", "| 11. Find the average number of courses taught by an instructor          |");
     printf("%-50s%\n", "|-------------------------------------------------------------------------|");
 }
 
@@ -309,6 +308,88 @@ void deleteInstruction(List &L, List I){
                 printf("%-50s%\n", "\n        Delete Instruction Success\n");
             }
         }
+    }
+}
+
+void showInstructor3Course(List L,List I){
+    address pCourse,pInstructor;
+    bool condition  ;
+    int counter;
+    pInstructor = First(L);
+    while (pInstructor != Nil){
+         pCourse = First(I);
+         counter = 0;
+         condition = false ;
+         while (pCourse != Nil && condition != true ){
+            if (relation(pCourse) == pInstructor){
+                counter++;
+                if (counter == 4){
+                    condition = true;
+                    cout << "\nThe instructor who taught more then 3 course " <<  endl;
+                    cout << info(pInstructor).name << endl;
+                }
+            }
+            pCourse = next(pCourse);
+         }
+
+         pInstructor = next(pInstructor);
+    }
+    if (condition == false ){
+        cout << "\nThere are no instructors who teach more than 3 course\n" << endl;
+    }
+}
+
+void showMostCourses(List L,List I){
+    address pCourse,pInstructor;
+    int Max,sum;
+    pInstructor = First(L);
+    Max = 0;
+    while (pInstructor != Nil){
+         sum = 0;
+         pCourse = First(I);
+         while (pCourse != Nil){
+            if (info(relation(pCourse)).name == info(pInstructor).name){
+                sum++;
+            }
+            pCourse = next(pCourse);
+         }
+        if (Max < sum ){
+            Max = sum ;
+        }
+        pInstructor = next(pInstructor);
+    }
+    if (Max == 0 ){
+        cout << "\nNo courses have been made yet\n" << endl;
+    }else {
+        cout << "\nThe highest number of courses taught by one instructor is :" << Max << endl;
+    }
+}
+
+void showInstructorTeachMostCourse(List L,List I){
+    address pCourse,pInstructor,pMax;
+    int Max,sum;
+    pInstructor = First(L);
+    pMax = pInstructor;
+    Max = 0;
+    while (pInstructor != Nil){
+         sum = 0;
+         pCourse = First(I);
+         while (pCourse != Nil){
+            if (info(relation(pCourse)).name == info(pInstructor).name){
+                sum++;
+            }
+            pCourse = next(pCourse);
+         }
+        if (Max < sum ){
+            Max = sum ;
+            pMax = pInstructor ;
+        }
+        pInstructor = next(pInstructor);
+    }
+    if (Max == 0 ){
+        cout << "\nNo courses have been made yet\n" << endl;
+    }else {
+        cout << "\nthe instructor who teaches the most courses : " << info(pMax).name ;
     }
 }
 

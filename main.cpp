@@ -28,12 +28,18 @@ int main()
             addCourse(instructure, course);
         }else if (choice == "4"){
             showInstructorCourse(course,instructure);
-        }else if (choice == "7"){
-            showInstructorByCourse(instructure,course);
         }else if(choice == "5"){
             deleteCourse(instructure, course);
         }else if(choice == "6"){
             deleteInstruction(instructure, course);
+        }else if (choice == "7"){
+            showInstructorByCourse(instructure,course);
+        }else if (choice == "8"){
+            showInstructor3Course(instructure,course);
+        }else if (choice == "9"){
+            showMostCourses(instructure,course);
+        }else if (choice == "10"){
+            showInstructorTeachMostCourse(instructure,course);
         }else {
             cout << "                       Input does not exist on menu"                        << endl;
         }
