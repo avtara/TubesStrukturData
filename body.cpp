@@ -313,8 +313,9 @@ void deleteInstruction(List &L, List I){
 
 void showInstructor3Course(List L,List I){
     address pCourse,pInstructor;
-    bool condition  ;
+    bool condition,condition2  ;
     int counter;
+    condition2=false;
     pInstructor = First(L);
     while (pInstructor != Nil){
          pCourse = First(I);
@@ -325,6 +326,7 @@ void showInstructor3Course(List L,List I){
                 counter++;
                 if (counter == 4){
                     condition = true;
+                    condition2 = true;
                     cout << "\nThe instructor who taught more then 3 course " <<  endl;
                     cout << info(pInstructor).name << endl;
                 }
@@ -334,7 +336,7 @@ void showInstructor3Course(List L,List I){
 
          pInstructor = next(pInstructor);
     }
-    if (condition == false ){
+    if (condition2 == false ){
         cout << "\nThere are no instructors who teach more than 3 course\n" << endl;
     }
 }
@@ -389,7 +391,7 @@ void showInstructorTeachMostCourse(List L,List I){
     if (Max == 0 ){
         cout << "\nNo courses have been made yet\n" << endl;
     }else {
-        cout << "\nthe instructor who teaches the most courses : " << info(pMax).name ;
+        cout << "\nthe instructor who teaches the most courses : " << info(pMax).name << endl;
     }
 }
 
@@ -410,15 +412,15 @@ void mean(List L,List I){
          }
         pInstructor = next(pInstructor);
     }
-    if (pInstructor == Nil ){
+    if (First(L)== Nil ){
         cout << "\nThe instructor have not been made yet\n" ;
-    }else if (pCourse == Nil) {
+    }else if (First(I) == Nil) {
         cout << "\nThe course has not been created\n" ;
     }else {
         mean = sumCourse/sumInstructor ;
         if (mean == 0){
             mean = 1;
         }
-        cout << "\nThe average course taught by one instructor is :" << mean ;
+        cout << "\nThe average course taught by one instructor is : " << mean << endl;
     }
 }
